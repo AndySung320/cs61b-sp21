@@ -24,7 +24,7 @@ public class TimeSLList {
     public static void timeGetLast() {
         // TODO: YOUR CODE HERE
         int N = 1000;
-        int M = 1000;
+        int M = 10000;
         AList<Integer> Ns = new AList();
         AList<Double> times = new AList();
         AList<Integer> opCounts = new AList();
@@ -37,6 +37,7 @@ public class TimeSLList {
             for(int i = 0; i < M; i++){
                 int last = tmp.getLast();
             }
+//            tmp.getLast();
             double timeInSeconds = sw.elapsedTime();
             Ns.addLast(N);
             times.addLast(timeInSeconds);
