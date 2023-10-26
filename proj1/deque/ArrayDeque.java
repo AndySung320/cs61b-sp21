@@ -120,7 +120,7 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
         AnyType tmp [] = (AnyType[]) new Object[capacity];
         int start = plusOne(nextFirst);
         int end = minusOne(nextLast);
-        for (int i = 0; i < items.length; i++){
+        for (int i = 0; i < size; i++){
             tmp[i] = items[start];
             start = plusOne(start);
         }
@@ -187,28 +187,51 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
 
     }
     public static void main(String[] args){
-        ArrayDeque<Integer> A = new ArrayDeque();
-        A.addLast(1);
-        A.addLast(2);
-        A.addLast(3);
-        A.addLast(4);
-        A.addLast(5);
-        A.addLast(6);
-        A.addLast(7);
-        A.addLast(8);
-        //A.removeFirst();
-        A.addLast(9);
-        A.removeFirst();
-        A.printDeque();
-        System.out.printf("done\n");
-        Iterator<Integer> seer = A.iterator();
-        while(seer.hasNext()){
-            int i = seer.next();
-            System.out.println(i);
+        ArrayDeque<Integer> a = new ArrayDeque();
+//        A.addLast(1);
+//        A.addLast(2);
+//        A.addLast(3);
+//        A.addLast(4);
+//        A.addLast(5);
+//        A.addLast(6);
+//        A.addLast(7);
+//        A.addLast(8);
+//        //A.removeFirst();
+//        A.addLast(9);
+//        A.removeFirst();
+//        A.printDeque();
+//        System.out.printf("done\n");
+//        Iterator<Integer> seer = A.iterator();
+//        while(seer.hasNext()){
+//            int i = seer.next();
+//            System.out.println(i);
+        a.addFirst(0);
+        a.addFirst(1);
+        a.addLast(2);
+        a.addLast(3);
+        a.addFirst(4);
+        a.addLast(5);
+        a.addLast(6);
+        a.addFirst(7);
+        a.addFirst(8);
+        a.removeFirst();     //==> 8
+        a.removeFirst();     //==> 7
+        a.removeFirst();     //==> 4
+        a.removeLast();      //==> 6
+        a.removeFirst();     //==> 1
+        a.addFirst(14);
+        a.addLast(15);
+        a.addFirst(16);
+        a.removeFirst();     //==> 16
+        a.get(5);      //==> 15
+        a.get(3);      //==> 3
+        a.removeLast();      //==> 15
+        a.get(0);      //==> 14
+        a.removeLast() ;     //==> 5
+        a.removeLast();
         }
 
     }
 
-}
 
 
