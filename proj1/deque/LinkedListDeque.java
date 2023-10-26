@@ -142,18 +142,25 @@ public class LinkedListDeque<AnyType> implements Deque<AnyType>, Iterable<AnyTyp
 
 
     public boolean equals(Object o){
-        if (o instanceof LinkedListDeque olld){
-            if (olld.size != this.size){
-                return false;
-            }
-            for (int i = 0; i < size; i++){
-                if (this.get(i) != olld.get(i)){
-                    return false;
-                }
-            }
+        if (this == o){
             return true;
         }
-        return false;
+        if (o == null){
+            return false;
+        }
+        if (!(o instanceof LinkedListDeque)){
+            return false;
+        }
+        LinkedListDeque<?> lld = (LinkedListDeque<?>) o;
+        if (lld.size() != size) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (lld.get(i) != get(i)) {
+                return false;
+            }
+        }
+        return true;
     }
     public Iterator<AnyType> iterator() {
         return new LinkedListIterator();

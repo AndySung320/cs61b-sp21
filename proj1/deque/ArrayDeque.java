@@ -139,20 +139,27 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
     }
 
     public boolean equals(Object o) {
-        if (o instanceof ArrayDeque oad) {
-            if (oad.size != this.size) {
-                return false;
-            }
-            int start = plusOne(nextFirst);
-            int end = nextLast;
-            for (int i = 0; i != end; i = plusOne(i)) {
-                if (this.get(i) != oad.get(i)) {
-                    return false;
-                }
-            }
+        if (this == o){
             return true;
         }
-        return false;
+        if (o == null){
+            return false;
+        }
+        if (!(o instanceof ArrayDeque)){
+            return false;
+        }
+        ArrayDeque<?> oa = (ArrayDeque<?>) o;
+        if (oa.size != size){
+            return false;
+        }
+        int start = plusOne(nextFirst);
+        int end = nextLast;
+        for (int i = start; i != end; i = plusOne(i)){
+            if(oa.get(i) != get(i)){
+                return false;
+            }
+        }
+        return true;
     }
 
     public Iterator<AnyType> iterator() {
