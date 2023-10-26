@@ -1,9 +1,6 @@
 package deque;
-
-import java.util.ArrayDeque;
 import java.util.Iterator;
 
-import net.sf.saxon.om.Item;
 
 public class LinkedListDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
 
