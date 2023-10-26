@@ -11,7 +11,7 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
     private int capacity = 8;
 
     public ArrayDeque(){
-        items = (AnyType[]) new Object[4];
+        items = (AnyType[]) new Object[8];
         nextFirst = 0;
         nextLast = 1;
         size = 0;
@@ -55,12 +55,13 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
         if (this.isEmpty()){
             return null;
         }
-        resize();
+
         int tmp = plusOne(nextFirst);
         AnyType x = items[tmp];
         items[tmp] = null;
         nextFirst = tmp;
         size = size - 1;
+        resize();
         return x;
     }
 
@@ -69,12 +70,13 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
         if (this.isEmpty()){
             return null;
         }
-        resize();
+
         int tmp = minusOne(nextLast);//Math.floorMod(nextLast - 1 , items.length);
         AnyType x = items[tmp];
         items[tmp] = null;
         nextLast = tmp;
         size = size - 1;
+        resize();
         return x;
     }
 
@@ -131,7 +133,7 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
     public void printDeque(){
         int start = plusOne(nextFirst);
         int end = nextLast;
-        for (int i = start; i != end; i = plusOne(i)) {
+        for (int i = 0; i < size; i++) {
             AnyType x = get(i);
             System.out.print(x + " ");
         }
@@ -169,16 +171,16 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
         private int wizPos;
 
         private ArrayDequeIterator(){
-            wizPos = plusOne(nextFirst);
+            wizPos = 0;
         }
 
         public boolean hasNext(){
-            return wizPos < nextLast;
+            return wizPos < size;
         }
 
         public AnyType next(){
             AnyType item = get(wizPos);
-            wizPos = plusOne(wizPos);
+            wizPos = wizPos + 1;
             return item;
         }
 
@@ -189,8 +191,14 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType>{
         A.addLast(1);
         A.addLast(2);
         A.addLast(3);
-        A.addFirst(4);
+        A.addLast(4);
         A.addLast(5);
+        A.addLast(6);
+        A.addLast(7);
+        A.addLast(8);
+        //A.removeFirst();
+        A.addLast(9);
+        A.removeFirst();
         A.printDeque();
         System.out.printf("done\n");
         Iterator<Integer> seer = A.iterator();
