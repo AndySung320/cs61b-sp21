@@ -109,7 +109,7 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
             start = plusOne(start);
         }
         nextFirst = capacity - 1;
-        nextLast = items.length;
+        nextLast = size();
         items = tmp;
 
     }
@@ -124,7 +124,7 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
             start = plusOne(start);
         }
         nextFirst = capacity - 1;
-        nextLast = items.length;
+        nextLast = size();
         items = tmp;
 
     }
@@ -185,48 +185,29 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
     }
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque();
-//        A.addLast(1);
-//        A.addLast(2);
-//        A.addLast(3);
-//        A.addLast(4);
-//        A.addLast(5);
-//        A.addLast(6);
-//        A.addLast(7);
-//        A.addLast(8);
-//        //A.removeFirst();
-//        A.addLast(9);
-//        A.removeFirst();
-//        A.printDeque();
-//        System.out.printf("done\n");
-//        Iterator<Integer> seer = A.iterator();
-//        while(seer.hasNext()){
-//            int i = seer.next();
-//            System.out.println(i);
         a.addFirst(0);
-        a.addFirst(1);
-        a.addLast(2);
-        a.addLast(3);
-        a.addFirst(4);
-        a.addLast(5);
+        a.removeLast();      //==> 0
+        a.addFirst(2);
+        a.addFirst(3);
+        a.addLast(4);
+        a.addFirst(5);
         a.addLast(6);
         a.addFirst(7);
         a.addFirst(8);
-        a.removeFirst();     //==> 8
-        a.removeFirst();     //==> 7
-        a.removeFirst();     //==> 4
-        a.removeLast();      //==> 6
-        a.removeFirst();     //==> 1
-        a.addFirst(14);
-        a.addLast(15);
-        a.addFirst(16);
-        a.removeFirst();     //==> 16
-        a.get(5);      //==> 15
-        a.get(3);      //==> 3
-        a.removeLast();      //==> 15
-        a.get(0);      //==> 14
-        a.removeLast();     //==> 5
-        a.removeLast();
-        System.out.print(a instanceof Deque<?>);
+        a.addLast(9);
+        a.addFirst(10);
+        a.get(6);      //==> 4
+        a.removeFirst();     //==> 10
+        a.removeFirst() ;    //==> 8
+        a.removeLast()   ;  // ==> 9
+        a.removeLast()   ;//   ==> 6
+        a.get(2)   ;   //==> 3
+        a.removeFirst();    // ==> 7
+        a.removeLast()  ; //   ==> 4
+        a.get(1)     ;// ==> 3
+        a.removeFirst();    // ==> 5
+        a.addLast(21);
+        System.out.print(a.equals(a));
         }
 
     }
