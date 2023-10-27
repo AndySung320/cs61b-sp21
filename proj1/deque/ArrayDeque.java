@@ -146,16 +146,14 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
         if (o == null){
             return false;
         }
-        if (!(o instanceof ArrayDeque)){
+        if (!(o instanceof Deque)){
             return false;
         }
-        ArrayDeque<?> oa = (ArrayDeque<?>) o;
-        if (oa.size != size) {
+        Deque<?> oa = (Deque<?>) o;
+        if (oa.size() != size) {
             return false;
         }
-        int start = plusOne(nextFirst);
-        int end = nextLast;
-        for (int i = start; i != end; i = plusOne(i)){
+        for (int i = 0; i < size; i++){
             if(oa.get(i) != get(i)){
                 return false;
             }
@@ -228,6 +226,7 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
         a.get(0);      //==> 14
         a.removeLast();     //==> 5
         a.removeLast();
+        System.out.print(a instanceof Deque<?>);
         }
 
     }

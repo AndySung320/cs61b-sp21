@@ -1,4 +1,5 @@
 package deque;
+//import java.util.ArrayDeque;
 import java.util.Iterator;
 
 
@@ -145,10 +146,11 @@ public class LinkedListDeque<AnyType> implements Deque<AnyType>, Iterable<AnyTyp
         if (o == null){
             return false;
         }
-        if (!(o instanceof LinkedListDeque)){
+        if (!(o instanceof Deque<?>)){
             return false;
         }
-        LinkedListDeque<?> lld = (LinkedListDeque<?>) o;
+        //LinkedListDeque<?> lld = (LinkedListDeque<?>) o;
+        Deque<?> lld = (Deque<?>) o;
         if (lld.size() != size) {
             return false;
         }
@@ -193,6 +195,21 @@ public class LinkedListDeque<AnyType> implements Deque<AnyType>, Iterable<AnyTyp
         L.addFirst(2);
         L.addFirst(1);
         L.printDeque();
+
+        LinkedListDeque b = new LinkedListDeque();
+        b.addFirst(4);
+        b.addFirst(3);
+        b.addFirst(2);
+        b.addFirst(5);
+
+        ArrayDeque<Integer> c = new ArrayDeque();
+        c.addFirst(4);
+        c.addFirst(3);
+        c.addFirst(2);
+        c.addFirst(1);
+
+        System.out.print(c instanceof Deque<?>);
+        System.out.print(L.equals(c));
 
         Iterator<Integer> seer = L.iterator();
         while(seer.hasNext()){
