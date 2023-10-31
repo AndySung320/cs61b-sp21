@@ -14,6 +14,9 @@ public class GuitarHeroLite {
         GuitarString stringA = new GuitarString(CONCERT_A);
         GuitarString stringC = new GuitarString(CONCERT_C);
 
+
+        String keyboard = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
+
         while (true) {
 
             /* check if the user has typed a key; if so, process it */
@@ -24,17 +27,18 @@ public class GuitarHeroLite {
                 } else if (key == 'c') {
                     stringC.pluck();
                 }
+
             }
 
             /* compute the superposition of samples */
-            double sample = stringA.sample() + stringC.sample();
+            double sample = stringA.sample()+ stringC.sample();
 
             /* play the sample on standard audio */
             StdAudio.play(sample);
 
             /* advance the simulation of each guitar string by one step */
             stringA.tic();
-            stringC.tic();
+            //stringC.tic();
         }
     }
 }

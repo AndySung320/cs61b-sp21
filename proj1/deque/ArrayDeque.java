@@ -208,6 +208,8 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
         a.removeFirst();    // ==> 5
         a.addLast(21);
         System.out.print(a.equals(a));
+        ArrayDeque<Integer> b = new ArrayDeque<>();
+        b.addLast(333);
         }
 
     }
