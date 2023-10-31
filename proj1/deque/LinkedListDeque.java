@@ -139,28 +139,50 @@ public class LinkedListDeque<AnyType> implements Deque<AnyType>, Iterable<AnyTyp
     }
 
 
-    public boolean equals(Object o){
-        if (this == o){
+//    public boolean equals(Object o){
+//        if (this == o){
+//            return true;
+//        }
+//        if (o == null){
+//            return false;
+//        }
+//        if (!(o instanceof Deque<?>)){
+//            return false;
+//        }
+//        //LinkedListDeque<?> lld = (LinkedListDeque<?>) o;
+//        Deque<?> lld = (Deque<?>) o;
+//        if (lld.size() != size) {
+//            return false;
+//        }
+//        for (int i = 0; i < size; i++) {
+//            if (lld.get(i) != get(i)) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (o == null){
+        if (o == null) {
             return false;
         }
-        if (!(o instanceof Deque<?>)){
+        if (!(o instanceof Deque)) {
             return false;
         }
-        //LinkedListDeque<?> lld = (LinkedListDeque<?>) o;
-        Deque<?> lld = (Deque<?>) o;
-        if (lld.size() != size) {
+        Deque<AnyType> ol = (Deque<AnyType>) o;
+        if (ol.size() != this.size()) {
             return false;
         }
         for (int i = 0; i < size; i++) {
-            if (lld.get(i) != get(i)) {
+            if (!(ol.get(i).equals(this.get(i)))) {
                 return false;
             }
         }
         return true;
     }
+    
     public Iterator<AnyType> iterator() {
         return new LinkedListIterator();
     }
