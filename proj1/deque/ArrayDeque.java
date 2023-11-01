@@ -1,5 +1,5 @@
 package deque;
-import java.lang.Math;
+
 import java.util.Iterator;
 
 public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
@@ -47,12 +47,12 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
     public void addLast(AnyType item) {
         resize();
         items[nextLast] = item;
-        nextLast = plusOne(nextLast);;
+        nextLast = plusOne(nextLast);
         size = size + 1;
     }
     /** Remove the first element of the array. */
     public AnyType removeFirst() {
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             return null;
         }
 
@@ -67,11 +67,11 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
 
     /** Remove the last element of the array. */
     public AnyType removeLast() {
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             return null;
         }
 
-        int tmp = minusOne(nextLast);//Math.floorMod(nextLast - 1 , items.length);
+        int tmp = minusOne(nextLast); //Math.floorMod(nextLast - 1 , items.length);
         AnyType x = items[tmp];
         items[tmp] = null;
         nextLast = tmp;
@@ -83,10 +83,10 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
     public int size() { return size; }
 
     public boolean isEmpty() {
-        if (size == 0){
+        if (size == 0) {
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
@@ -95,14 +95,14 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
         if (size == items.length) {
             expand();
         }
-        if (size < (items.length * 0.25) && items.length > 8 ){
+        if (size < (items.length * 0.25) && items.length > 8 ) {
             shrink();
         }
     }
 
     public void expand() {
         capacity = items.length * 2;
-        AnyType tmp [] = (AnyType[]) new Object[capacity];
+        AnyType tmp[] = (AnyType[]) new Object[capacity];
         int start = plusOne(nextFirst);
         for (int i = 0; i < items.length; i++){
             tmp[i] = items[start];
@@ -119,7 +119,7 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
         AnyType tmp [] = (AnyType[]) new Object[capacity];
         int start = plusOne(nextFirst);
         int end = minusOne(nextLast);
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             tmp[i] = items[start];
             start = plusOne(start);
         }
@@ -140,21 +140,21 @@ public class ArrayDeque<AnyType> implements Deque<AnyType>, Iterable<AnyType> {
     }
 
     public boolean equals(Object o) {
-        if (this == o){
+        if (this == o) {
             return true;
         }
-        if (o == null){
+        if (o == null) {
             return false;
         }
-        if (!(o instanceof Deque)){
+        if (!(o instanceof Deque)) {
             return false;
         }
         Deque<?> oa = (Deque<?>) o;
         if (oa.size() != size) {
             return false;
         }
-        for (int i = 0; i < size; i++){
-            if(oa.get(i) != get(i)){
+        for (int i = 0; i < size; i++) {
+            if (!(oa.get(i).equals(this.get(i)))) {
                 return false;
             }
         }

@@ -182,7 +182,7 @@ public class LinkedListDeque<AnyType> implements Deque<AnyType>, Iterable<AnyTyp
         }
         return true;
     }
-    
+
     public Iterator<AnyType> iterator() {
         return new LinkedListIterator();
     }
